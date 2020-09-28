@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="core_fast_click_id" type="id"/>
+    <item name="core_status_bar_id" type="id"/>
+    <item name="core_title_id" type="id"/>
+</resources>

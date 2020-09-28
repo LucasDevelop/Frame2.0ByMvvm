@@ -1,0 +1,135 @@
+apply plugin: plugs.android.app
+apply plugin: 'com.huawei.agconnect'
+apply plugin: plugs.android.kAndroid
+apply plugin: plugs.android.kAndroidExt
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.chnchat.client"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode 10200
+        versionName '1.1.90'
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "MI_PUSH_APP_ID", '"2882303761518417812"')
+        buildConfigField("String", "MI_PUSH_APP_KEY", '"5701841733812"')
+        buildConfigField("String", "OPPO_PUSH_APP_KEY", '"a5c63e24968a43f5bb9c6d92065e9848"')
+        buildConfigField("String", "OPPO_PUSH_APP_SECRET", '"5066f864281e4f46be8261dc5e5c7968"')
+
+        //微信
+        buildConfigField 'String', 'WX_APP_ID', '"wx5e243aa39ccdaa62"'
+        buildConfigField 'String', 'WX_APP_SECRET', '"ed36b60342bbf3d14d311314c1f0fd8d"'
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
+        resConfigs "en", "zh-rCN"
+    }
+    signingConfigs {
+        allwins {
+            keyAlias 'allwins'
+            keyPassword 'allwins'
+            storeFile file('allwins.jks')
+            storePassword 'allwins'
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField("String", "host", '"https://api.ihantok.com"')
+            buildConfigField("String", "user_protocol", '"https://www.ihantok.com/HanTok-Terms%20of%20Use.html"')//隐私协议
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.allwins
+        }
+        debug {
+            buildConfigField("String", "host", '"https://test.ihantok.com"')
+            buildConfigField("String", "user_protocol", '"https://www.ihantok.com/HanTok-Terms%20of%20Use.html"')//隐私协议
+            signingConfig signingConfigs.allwins
+        }
+        inland {//国内
+            buildConfigField("String", "host", '"https://api.ihantok.com"')
+            buildConfigField("String", "user_protocol", '"https://www.ihantok.com/HanTok-Terms-cn.mht"')//隐私协议
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.allwins
+        }
+        google {
+            buildConfigField("String", "host", '"https://api.ihantok.com"')
+            buildConfigField("String", "user_protocol", '"https://www.ihantok.com/HanTok-Terms%20of%20Use.html"')//隐私协议
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.allwins
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility  versions.jdkVersion
+        targetCompatibility  versions.jdkVersion
+    }
+    kotlinOptions {
+        jvmTarget =  versions.jdkVersion
+    }
+//在生成的apk文件，修改下命名
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                // 前段
+                def fileName = outputFile.name
+                        .replace("app", "HanTok")
+                // 尾段
+                        .replace(".apk", "_v${defaultConfig.versionName}.apk")
+
+                outputFileName = fileName
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlin.stdlib
+    implementation deps.androidx.appcompat
+    implementation deps.utils.banner
+    implementation deps.androidx.constraintlayout
+    implementation project(deps.libs.base)
+    implementation deps.androidx.material
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation deps.androidx.lifecycleExtensions
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //互动课堂
+    implementation 'com.tencent.teduboard:TEduBoardSdkNoTbs:2.5.2.49'
+    implementation 'com.tencent.taisdk:taisdk:1.2.3.3'
+    implementation 'com.tencent.imsdk:tuikit:4.9.1'
+
+    //fb
+    implementation 'com.facebook.android:facebook-core:[5,6)'
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //google login
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+
+    implementation 'com.huawei.android.hms:base:2.6.3.301'
+    implementation 'com.huawei.android.hms:push:2.6.3.301'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+    implementation('com.google.firebase:firebase-core:17.4.3'){
+        exclude group: 'com.google.android.gms', module: 'play-services-ads-identifier'
+    }
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+
+}
+
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin

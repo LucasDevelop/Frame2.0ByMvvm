@@ -1,0 +1,17 @@
+apply plugin: plugs.java
+apply plugin: plugs.android.kotlin
+apply plugin: plugs.android.kapt
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(deps.libs.annotations)
+    implementation deps.kotlin.stdlib
+    implementation deps.compiler.autoService
+    kapt deps.compiler.autoService
+    implementation deps.compiler.javapoet
+}
+
+compileJava{
+    sourceCompatibility = versions.jdkVersion
+    targetCompatibility = versions.jdkVersion
+}

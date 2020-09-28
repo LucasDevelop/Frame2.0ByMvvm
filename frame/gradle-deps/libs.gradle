@@ -1,0 +1,8 @@
+ext.deps += [
+        libs: [
+                annotations: ':frame:annotations',
+                compiler   : ':frame:compiler',
+                core       : ':frame:core',
+                base       : ':frame:base',
+        ],
+]

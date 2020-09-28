@@ -1,0 +1,31 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="btFull">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/base_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@mipmap/ic_bt_full</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="btStroke">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/base_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@mipmap/ic_bt_stroke</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+</resources>

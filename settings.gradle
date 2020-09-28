@@ -1,0 +1,7 @@
+include ':frame:annotations'
+include ':frame:base'
+include ':frame:core'
+include ':frame'
+include ':frame:compiler'
+include ':app'
+rootProject.name = "HanTok"

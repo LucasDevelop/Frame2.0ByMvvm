@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "458495532412",
+    "firebase_url": "https://hantok-db085.firebaseio.com",
+    "project_id": "hantok-db085",
+    "storage_bucket": "hantok-db085.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458495532412:android:76007db7061a2d3671d8f9",
+        "android_client_info": {
+          "package_name": "com.chnchat.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458495532412-eo4mv2d8g387rse62pusk4n08ka74jie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chnchat.client",
+            "certificate_hash": "176690bbe6092d21e9f020dcbf19768e1c12c515"
+          }
+        },
+        {
+          "client_id": "458495532412-odkfenims1ns0pbm2sl4i2k4b0m1ro68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chnchat.client",
+            "certificate_hash": "255f6372988c4edd6926d887440982d3709f2028"
+          }
+        },
+        {
+          "client_id": "458495532412-dph386o1jlnv5k2gchks62bbn160r2gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjOctZTDzbHv80BwVY91qTQVTD7hL0lZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458495532412-dph386o1jlnv5k2gchks62bbn160r2gi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "458495532412-0rqngk9mmpjmrju6e6rdddn7eicroq9o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chnchat.chnchat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

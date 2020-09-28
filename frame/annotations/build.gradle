@@ -1,0 +1,12 @@
+apply plugin: plugs.java
+apply plugin: plugs.android.kotlin
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.stdlib
+}
+
+compileJava{
+    sourceCompatibility = versions.jdkVersion
+    targetCompatibility = versions.jdkVersion
+}

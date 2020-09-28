@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    apply from:'frame/gradle-deps/base.gradle'
+    ext {
+        kotlin_version = '1.4.0'
+    }
+    repositories {
+        maven { url 'https://dl.bintray.com/tencentqcloudterminal/maven' }
+        jcenter()
+        google()
+        mavenCentral()
+        maven {url 'https://developer.huawei.com/repo/'}
+        maven{
+            url 'http://maven.scm.adc.com:8081/nexus/content/repositories/releases/'
+        }
+    }
+    addRepos(getRepositories())
+    addDepend(getDependencies())
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.3'  // Google Services plugin
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0'
+        classpath 'com.huawei.agconnect:agcp:1.2.1.301'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://dl.bintray.com/tencentqcloudterminal/maven' }
+        google()
+        maven { url'https://jitpack.io'}
+        maven {url 'https://developer.huawei.com/repo/'}
+        jcenter()
+        maven{
+            url 'http://maven.scm.adc.com:8081/nexus/content/repositories/releases/'
+        }
+    }
+    addRepos(getRepositories())
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+apply from:'frame/gradle-deps/libs.gradle'

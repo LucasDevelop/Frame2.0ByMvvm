@@ -1,0 +1,55 @@
+apply plugin: plugs.android.lib
+apply plugin: plugs.android.kAndroid
+apply plugin: plugs.android.kAndroidExt
+
+android {
+    resourcePrefix  "${project.getName()}_"
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlin.stdlib
+    implementation deps.androidx.appcompat
+    api deps.rx.permissions
+    api deps.rx.rxjava
+    api deps.rx.rxandroid
+    api deps.utils.utilcodex
+    api deps.utils.statusbarutil
+    api deps.utils.quickAdapter
+    implementation deps.utils.multidex
+    api deps.image.glide
+    annotationProcessor deps.image.glideCompiler
+    api deps.net.retrofit
+    api deps.net.okhttp
+    api deps.net.okio
+    api deps.net.okInterceptor
+    api deps.net.adapterRxJava
+    api deps.net.converterGson
+    api deps.androidx.roomRuntime
+    api deps.androidx.roomRxjava2
+    annotationProcessor deps.androidx.roomCompiler
+    api project(deps.libs.annotations)
+    api deps.utils.refreshLayout
+    api deps.utils.refreshHeader
+    api deps.utils.refreshFooter
+    api "org.jetbrains.kotlin:kotlin-reflect:1.4.0"
+}
