@@ -18,12 +18,13 @@ import com.luan.base.R
  */
 abstract class BaseDialog(val ctx: Context, style: Int = R.style.base_dialog_style) : Dialog(ctx, style) {
 
-    abstract fun layoutId():Int
+    abstract fun layoutId(): Int
 
     abstract fun initView()
+    val rootView: View
 
     init {
-        val rootView = layoutInflater.inflate(layoutId(), null, false) as ViewGroup
+        rootView = layoutInflater.inflate(layoutId(), null, false) as ViewGroup
         setContentView(rootView)
         if (ctx is AppCompatActivity) {
             //防止窗口泄漏
@@ -49,15 +50,15 @@ abstract class BaseDialog(val ctx: Context, style: Int = R.style.base_dialog_sty
     }
 
     private fun WindowStyle.resetWindowStyle() {
-        if (backgroundColor>0)
-        window?.setBackgroundDrawableResource(backgroundColor)
+        if (backgroundColor > 0)
+            window?.setBackgroundDrawableResource(backgroundColor)
         val attributes = window?.attributes
         attributes?.width = this.width
         attributes?.height = this.height
         attributes?.gravity = this.gravity
         window?.attributes = attributes
-        if (anim>0)
-        window?.setWindowAnimations(anim)
+        if (anim > 0)
+            window?.setWindowAnimations(anim)
     }
 
 

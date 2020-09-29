@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.chnchat.client.R
 import com.chnchat.client.ui.main.account.AccountFragment
 import com.chnchat.client.ui.main.book.BookFragment
@@ -14,9 +15,10 @@ import com.chnchat.client.ui.main.home.HomeFragment
 import com.chnchat.client.ui.main.message.MessageFragment
 import com.google.android.material.tabs.TabLayout
 import com.luan.base.design.ui.activity.BaseVMActivity
+import com.luan.base.ext.bindView
 import com.luan.core.ext.colorRes
 import kotlinx.android.synthetic.main.activity_main.*
-
+import com.luan.base.ext.bindView
 /**
  * @package    MainActivity.kt
  * @author     luan
@@ -35,6 +37,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     override val isShowTitle: Boolean = false
     override val statusBarColor: Int = R.color.white
+    override val backgroundColor: Int = R.color.color_page
 
     val fragmentsByStudent = arrayOf(
         HomeFragment.getInstance(),

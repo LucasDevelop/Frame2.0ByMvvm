@@ -41,9 +41,9 @@ class LoginActivity : BaseVMActivity<LoginViewModel>() {
     }
 
     @Click(
-        ids = [R.id.v_tab_mobile_login, R.id.v_tab_email_login, R.id.v_county_code,
-            R.id.v_send_code, R.id.v_register, R.id.v_facebook, R.id.v_google, R.id.v_twitter,
-            R.id.v_wechat, R.id.v_login, R.id.v_eyes, R.id.v_forget_pwd]
+        R.id.v_tab_mobile_login, R.id.v_tab_email_login, R.id.v_county_code,
+        R.id.v_send_code, R.id.v_register, R.id.v_facebook, R.id.v_google, R.id.v_twitter,
+        R.id.v_wechat, R.id.v_login, R.id.v_eyes, R.id.v_forget_pwd
     )
     fun onClick(v: View) {
         when (v) {

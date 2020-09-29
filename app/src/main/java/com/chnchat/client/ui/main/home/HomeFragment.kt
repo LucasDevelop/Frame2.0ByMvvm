@@ -1,6 +1,7 @@
 package com.chnchat.client.ui.main.home
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.blankj.utilcode.util.SizeUtils
 import com.chnchat.client.R
+import com.chnchat.client.dialog.switchuser.SwitchUserPop
 import com.chnchat.client.ext.bindNav
 import com.chnchat.client.ui.main.MainViewModel
 import com.chnchat.client.ui.main.home.record.RecordClassListActivity
@@ -18,6 +21,7 @@ import com.luan.base.design.ui.fragment.BaseVMFragment
 import com.luan.core.ext.loadCircleImg
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.include_home_title.*
 
 /**
  * @package    HomeFragment.kt
@@ -38,11 +42,13 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
     val upComingClassAdapter = UpComingClassAdapter()
     val recordClassAdapter = RecordClassAdapter()
     val bannerAdapter = HomeBannerAdapter()
+    val switchUserPop by lazy { SwitchUserPop(this) }
 
     override fun initView() {
         mainViewModel.userInfoLive.observer {
             it?.let {
                 v_user_icon.loadCircleImg(it.userInfo.avatarUrl)
+                v_username.text = it.userInfo.nickName
             }
         }
         v_upcoming_class_pager.adapter = upComingClassAdapter
@@ -56,11 +62,22 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
 //        RecordClassListActivity.launch(requireContext())
     }
 
+    @Click(R.id.v_username)
+    fun click(v: View) {
+        when (v) {
+            v_username -> {
+                switchUserPop.show(v_username)
+            }
+            else -> {
+            }
+        }
+    }
+
     private fun initBanner() {
         v_banner.addBannerLifecycleObserver(this)
             .setAdapter(bannerAdapter)
             .setIndicator(CircleIndicator(requireContext()))
-        bannerAdapter.setDatas(List(5){it.toString()})
+        bannerAdapter.setDatas(List(5) { it.toString() })
         bannerAdapter.notifyDataSetChanged()
     }
 

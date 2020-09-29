@@ -1,22 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.main.message.MessageFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <LinearLayout
+        android:id="@+id/v_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/v_user_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/v_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:drawableRight="@mipmap/ic_down_black"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            tools:text="Ryan" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/v_lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="26dp"
+            android:drawableRight="@mipmap/ic_down_black"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="English"
+            android:textColor="#ff000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_update_account"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_blue_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_update_account"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Update Account Info"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_update_student_info"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/v_update_account">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_blue_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Update Student Info"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_plans_pricing"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/v_my_orders"
+                app:layout_constraintTop_toBottomOf="@id/v_update_student_info">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_6fcfeb_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_my_orders"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toRightOf="@id/v_plans_pricing"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_update_student_info">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_6fcfeb_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_refer_friends"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/v_my_rewards"
+                app:layout_constraintTop_toBottomOf="@id/v_plans_pricing">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_e36386_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_my_rewards"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toRightOf="@id/v_refer_friends"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_plans_pricing">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_e36386_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_take_level"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/v_course_list"
+                app:layout_constraintTop_toBottomOf="@id/v_refer_friends">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_ffb71b_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+
+            <com.luan.base.widget.ShadowGroup
+                android:id="@+id/v_course_list"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintLeft_toRightOf="@id/v_take_level"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_refer_friends">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_ffb71b_c8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@mipmap/ic_plan"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="Plans &amp; Pricing"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+                </FrameLayout>
+            </com.luan.base.widget.ShadowGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

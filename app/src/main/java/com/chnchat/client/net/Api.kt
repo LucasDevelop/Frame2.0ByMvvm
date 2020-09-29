@@ -61,4 +61,8 @@ interface Api {
     //获取用户信息
     @POST("${p2pHantokPrefix}myCenter/getUserInfo")
     fun getUserInfo(@Body param:UuidParam): Observable<UserBean>
+
+    //获取老师列表
+    @POST("business/courseCenter/selectTeachers")
+    fun getTeacherList(@Body param:TeacherListParam):Observable<Int>
 }

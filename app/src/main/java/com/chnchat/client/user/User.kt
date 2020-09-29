@@ -33,7 +33,7 @@ object User : IUser<UserBean> {
     //更新用户信息
     fun refreshUserData(userBean: UserBean?) {
         if (userBean == null) return
-        this.userData = userBean.apply { uuid = this@User.userData.uuid }
+        this.userData.userInfo = userBean.userInfo
         SPUtils.getInstance().put(USER_DATA_KEY, gson.toJson(userData))
     }
 

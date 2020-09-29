@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.PixelFormat
 import androidx.annotation.ColorRes
 import androidx.annotation.IntRange
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.jaeger.library.StatusBarUtil
 import com.luan.core.ext.colorRes
@@ -22,6 +23,9 @@ interface Theme {
     //是否使用status view
     val isUseStatusView:Boolean
 
+    //是否显示标题
+    val isShowTitle:Boolean
+
     //状态栏颜色
     @get:ColorRes
     val statusBarColor: Int
@@ -30,5 +34,7 @@ interface Theme {
     @get:ColorRes
     val backgroundColor: Int
 
-
+    //标题布局ID
+    @get:LayoutRes
+    val titleLayoutId: Int
 }

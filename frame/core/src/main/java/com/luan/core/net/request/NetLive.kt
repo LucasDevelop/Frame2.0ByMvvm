@@ -18,6 +18,14 @@ open class NetLive<B> : LiveData<NetBean<B>>() {
     private var isShowToast = false
     var isShowLoading = true
 
+    public override fun setValue(value: NetBean<B>?) {
+        super.setValue(value)
+    }
+
+    override fun getValue(): NetBean<B>? {
+        return super.getValue()
+    }
+
     fun observer(block: (B?) -> Unit): NetLive<B> {
         if (owner!=null){
             observe(owner!!, {

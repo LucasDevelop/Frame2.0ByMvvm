@@ -7,55 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.main.home.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/v_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="12dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/v_user_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
-
-        <TextView
-            android:id="@+id/v_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:drawableRight="@mipmap/ic_down_black"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:textColor="#ff000000"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            tools:text="Ryan" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="17dp"
-            android:background="@drawable/shape_5da1ff_c12"
-            android:drawableRight="@mipmap/ic_right_white"
-            android:drawablePadding="10dp"
-            android:gravity="center"
-            android:paddingLeft="17dp"
-            android:paddingTop="7dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="7dp"
-            android:text="HSK 6 Lesson 10"
-            android:textColor="#ffffffff"
-            android:textSize="16sp" />
-    </LinearLayout>
+    <include layout="@layout/include_home_title"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -105,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="25dp"
-                android:src="@mipmap/ic_caleyer"
+                android:src="@mipmap/ic_calender"
                 app:layout_constraintBottom_toBottomOf="@id/v_upcoming_class"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/v_upcoming_class" />

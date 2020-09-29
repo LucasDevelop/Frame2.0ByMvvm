@@ -15,23 +15,23 @@ import com.luan.core.net.request.Request
  * @date       2020/9/21
  * @des
  */
-class LoginViewModel: BaseViewModel() {
+class LoginViewModel : BaseViewModel() {
 
     val loginEmailLive = Request<UuidBean>()
     val loginMobileLive = Request<UuidBean>()
     val sendSmsCodeLive = Request<Any>()
 
-    fun loginEmail(owner: LifecycleOwner,email:String,pwd:String){
+    fun loginEmail(owner: LifecycleOwner, email: String, pwd: String) {
         loginEmailLive.bindLifecycle(owner)
-        .call(api.loginEmail(LoginEmailParam(email,pwd))).showToast(true)
+            .call(api.loginEmail(LoginEmailParam(email, pwd))).showToast(true)
     }
 
-    fun loginMobile(owner: LifecycleOwner,mobile:String,code:String){
-        loginMobileLive.call(owner, api.loginMobile(LoginMobileParam(mobile,code))).showToast(true)
+    fun loginMobile(owner: LifecycleOwner, mobile: String, code: String) {
+        loginMobileLive.call(owner, api.loginMobile(LoginMobileParam(mobile, code))).showToast(true)
     }
 
-    fun sendSmsCode(owner: LifecycleOwner,mobile:String){
-        sendSmsCodeLive.call(owner,api.sendSmsCode(SmsParam(mobile))).showToast(true)
+    fun sendSmsCode(owner: LifecycleOwner, mobile: String) {
+        sendSmsCodeLive.call(owner, api.sendSmsCode(SmsParam(mobile))).showToast(true)
     }
 
 }

@@ -6,8 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.message.MessageFragment">
 
+    <TextView
+        android:id="@+id/v_message_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="Messages"
+        android:textColor="#ffffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout
         android:id="@+id/v_conversations"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_message_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

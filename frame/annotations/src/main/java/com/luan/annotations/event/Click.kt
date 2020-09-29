@@ -10,4 +10,4 @@ import javax.swing.text.View
  */
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class Click(val ids: IntArray, val fastClickTime: Long = 300L)
+annotation class Click(vararg val ids: Int, val fastClickTime: Long = 300L)

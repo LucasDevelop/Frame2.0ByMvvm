@@ -14,12 +14,6 @@ interface ViewAction {
     @get:LayoutRes
     val layoutId: Int
 
-    //标题布局ID
-    @get:LayoutRes
-    val titleLayoutId: Int
-
-    val isShowTitle:Boolean
-
     //控件初始化
     fun initView()
 

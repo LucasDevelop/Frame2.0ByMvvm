@@ -43,10 +43,10 @@ class DecorView(val host:Any,context: Context, val theme: Theme, val viewAction:
                 it.setNewLayoutParams(LParam.MS, heightDp = context.getStatusBarHeight())
             }
         }
-        if (viewAction.isShowTitle && viewAction.titleLayoutId > 0) {//添加标题
+        if (theme.isShowTitle && theme.titleLayoutId > 0) {//添加标题
             titleView =
                 LayoutInflater.from(context)
-                    .inflate(viewAction.titleLayoutId, this, false) as ViewGroup
+                    .inflate(theme.titleLayoutId, this, false) as ViewGroup
             titleView.id = R.id.core_title_id
             this@DecorView.addView(titleView)
             if (this@DecorView.childCount > 1) {

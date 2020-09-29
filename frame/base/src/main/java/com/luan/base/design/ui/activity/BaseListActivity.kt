@@ -3,7 +3,7 @@ package com.luan.base.design.ui.activity
 import androidx.recyclerview.widget.RecyclerView
 import com.luan.core.base.BaseViewModel
 import com.luan.core.ui.RefreshAction
-import com.luan.core.ui.proxy.RefreshListProxy
+import com.luan.core.ui.refresh.RefreshListProxy
 
 /**
  * @package    com.luan.base.design.ui.activity

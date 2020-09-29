@@ -16,6 +16,7 @@ import com.luan.base.R
  * @des         阴影容器
  */
 class ShadowGroup : FrameLayout {
+
     constructor(context: Context) : super(context) {
         initView(context, null)
     }
@@ -32,8 +33,9 @@ class ShadowGroup : FrameLayout {
     val shadowRectF = RectF()
     val defPadding = 15f
     var shadowDx = 2f
-    var shadowDy = 5f
+    var shadowDy = 4f
     var shadowRadius = 15f
+    var shadowMaxHeight = 0f//最大高度
     var shadowColor = Color.parseColor("#33000000")
 
     private fun initView(context: Context, attrs: AttributeSet?) {
@@ -42,6 +44,7 @@ class ShadowGroup : FrameLayout {
             shadowDx = obtain.getDimension(R.styleable.ShadowGroup_shadowDX, shadowDx)
             shadowDy = obtain.getDimension(R.styleable.ShadowGroup_shadowDY, shadowDy)
             shadowRadius = obtain.getDimension(R.styleable.ShadowGroup_shadowRadius, shadowRadius)
+            shadowMaxHeight = obtain.getDimension(R.styleable.ShadowGroup_shadowMaxHeight, shadowMaxHeight)
             shadowColor = obtain.getColor(R.styleable.ShadowGroup_shadowColor, shadowColor)
             obtain.recycle()
         }
@@ -50,10 +53,28 @@ class ShadowGroup : FrameLayout {
         shadowPaint.isAntiAlias = true
         shadowPaint.style = Paint.Style.FILL
         shadowPaint.color = Color.WHITE
+
+        setPadding(defPadding.toInt(), defPadding.toInt(), defPadding.toInt(), defPadding.toInt())
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val sizeW = MeasureSpec.getSize(widthMeasureSpec)
+        val modeW = MeasureSpec.getMode(widthMeasureSpec)
+        var sizeH = MeasureSpec.getSize(heightMeasureSpec)
+        val modeH = MeasureSpec.getMode(heightMeasureSpec)
+        //增加控件大小，用于空出多余的空间显示阴影
+        val newW = MeasureSpec.makeMeasureSpec((sizeW + defPadding * 2).toInt(), modeW)
+        var newH = MeasureSpec.makeMeasureSpec((sizeH + defPadding * 2).toInt(), modeH)
+        if (shadowMaxHeight > 0 && sizeH > shadowMaxHeight) {//限制最大高度
+            sizeH = shadowMaxHeight.toInt()
+            newH = MeasureSpec.makeMeasureSpec((sizeH + defPadding * 2).toInt(), modeH)
+        }
+        super.onMeasure(newW, newH)
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
+        //让控件居中
         shadowRectF.left = if (paddingLeft > 0) paddingLeft.toFloat() else defPadding
         shadowRectF.right = width.toFloat() - if (paddingRight > 0) paddingRight.toFloat() else defPadding
         shadowRectF.top = if (paddingTop > 0) paddingTop.toFloat() else defPadding
